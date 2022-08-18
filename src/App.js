@@ -1,6 +1,6 @@
 import './App.css';
 import ExpenseItem from './components/ExpenseItem';
-
+import Card  from './components/Card';
 function App() {
   const expenses = [
     {
@@ -27,14 +27,13 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <Card className='expenses'>
       <ExpenseItem 
         title={expenses[0].title } 
         amount={expenses[0].amount}
         date={expenses[0].date}>
       </ExpenseItem>
-      </header>
-     
+      </Card>
     </div>
   );
 }
