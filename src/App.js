@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { Fragment } from 'react';
 import './App.css';
+import Header from './Components/Layout/Header';
+import Meals from './Components/Meals/Meals';
 
 
 const App = () => {
     return (
-        <div>
-           
-        </div>
+        <Fragment>
+            <Header />
+            <main>
+                <Meals />
+            </main>
+        </Fragment>
     );
 }
 
