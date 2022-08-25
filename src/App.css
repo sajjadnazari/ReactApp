@@ -18,6 +18,12 @@ body{
     background: #f7f7f7
 }
 
+.add-task{
+    float: left;
+    width: 90%;
+    margin-right: 10px;
+}
+
 .todo-list.only-active .todo-item.complete {
     display: none
 }
