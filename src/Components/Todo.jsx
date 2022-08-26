@@ -1,28 +1,29 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment, PureComponent } from "react";
 import TodoList from "./TodoList";
-import AddTodo from "./AddTodo";
+import Header from "./Header";
 
-class Todo extends Component {
+class Todo extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
       todos: [
-        { id: 1, title: "test jsxghhgj 1 " },
-        { id: 2, title: "test bbbbbbbb 2 " },
-        { id: 3, title: "test wewewewe 3 " },
-        { id: 4, title: "test asdasdvb 4 " },
+        { id: 1, title: "test asdasd 1" },
+        { id: 2, title: "test werewr 2" },
+        { id: 3, title: "test bvnmna 3" },
+        { id: 4, title: "test lkopop 4" },
       ],
+      headerTitle: "Todo Application",
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  handleSubmit(title) {
+  onSubmit(title) {
     this.setState((state) => {
       return {
         ...state,
-        todos: [...state.todos, { id: Math.random(4, 200), title: title }],
+        todos: [...state.todos, { id: Math.random(5, 20), title: title }],
       };
     });
   }
@@ -30,18 +31,11 @@ class Todo extends Component {
   render() {
     return (
       <Fragment>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="card card-white">
-                <div className="card-body">
-                  <AddTodo handleSubmit={this.handleSubmit} />
-                  <TodoList todos={this.state.todos} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Header
+          headerTitle={this.state.headerTitle}
+          onSubmitHandler={this.onSubmit}
+        />
+        <TodoList todos={this.state.todos} />
       </Fragment>
     );
   }
