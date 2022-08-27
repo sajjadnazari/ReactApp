@@ -1,9 +1,10 @@
 import React from "react";
 import "./App.css";
-import Todo from "./Components/Todo";
+import IpInfo from "./Components/IpInfo";
+
 
 const App = () => {
-  return <Todo />;
+  return (<IpInfo />);
 };
 
 export default App;
