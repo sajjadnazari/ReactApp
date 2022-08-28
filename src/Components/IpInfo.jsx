@@ -1,31 +1,23 @@
 import React, { PureComponent } from 'react'
+import getInfo from '../Services/GetInoService';
 
 class IpInfo extends PureComponent {
     constructor(props) {
         super(props)
 
         this.state = {
-            Info: null
+            info: '',
+            isLoading: true
         }
     }
 
-    async GetIpAddress() {
-        const response = await fetch('https://api64.ipify.org?format=json');
-        return (await response.json()).ip
-    }
-
-    async GetInfo() {
-        const ipAddress = await this.GetIpAddress();
-        const response = await fetch(`http://ipwhois.app/json/${ipAddress}`);
-        return await response.json();
-    }
-
     componentDidMount() {
-        this.GetInfo().then(data => {
+        getInfo().then(data => {
             this.setState({
-                Info: data
+                info: data,
+                isLoading: false
             })
-        })
+        });
     }
 
     render() {
@@ -33,14 +25,14 @@ class IpInfo extends PureComponent {
             <div>
                 <div className="card-container">
                     <span className="info">Info</span>
-                    <img className="round" src="./br.svg" alt="brazil" />
-                    <h3>Brazil</h3>
-                    <h6>Guarulhos</h6>
-                    <p>isp: Akamai International B.V.</p>
+                    <img className="round" src={this.state.info.country_flag} alt={this.state.info.country} />
+                    <h3>{this.state.info.country}</h3>
+                    <h6>{this.state.info.city}</h6>
+                    <p>isp: {this.state.info.isp}</p>
                     <div className="footer">
-                        <p>{this.state.Info}</p>
-                        <p>latitude: -23.4543395</p>
-                        <p>longitude: -46.5336678</p>
+                        <p>{this.state.info.ip}</p>
+                        <p>{this.state.info.latitude}</p>
+                        <p>{this.state.info.longitude}</p>
                     </div>
                 </div>
             </div>
