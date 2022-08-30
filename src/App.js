@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
+import BlogPost from "./Components/BlogPost";
 
-import IpInfo from "./Components/IpInfo";
+
 
 
 const App = () => {
-  return (<IpInfo />);
+  return (<BlogPost/>);
 };
 
 export default App;
